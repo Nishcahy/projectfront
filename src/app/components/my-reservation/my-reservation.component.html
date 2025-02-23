@@ -1,0 +1,70 @@
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            @for (item of reservation; track $index) {
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bus Information</h5>
+                        <p class="card-text"><strong>Bus No:</strong> {{ item.bus.busNo }}</p>
+                        <p class="card-text"><strong>From:</strong> {{ item.bus.routeFrom }}</p>
+                        <p class="card-text"><strong>To:</strong> {{ item.bus.routeTo }}</p>
+                        <p class="card-text"><strong>Price:</strong> {{ item.bus.price }}</p>
+                        <p class="card-text"><strong>Time:</strong> {{ item.bus.departureTime }}</p>
+                        <h5 class="card-title">Reservation Information</h5>
+                        <p class="card-text"><strong>Date:</strong> {{ item.reservation.date }}</p>
+                        <p class="card-text"><strong>Total Amount:</strong> {{ item.reservation.totalAmount }}</p>
+                        <button (click)="togglePassengerDetails(item)" class="btn btn-primary">View Passenger Details</button>
+                        @if (togglePassengerDetails(item)) {
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Passenger Details</h5>
+                                    @for (pass of item.reservation.passengers; track $index) {
+                                        <p class="card-text"><strong>Name:</strong> {{ pass.name }}</p>
+                                        <p class="card-text"><strong>Age:</strong> {{ pass.age }}</p>
+                                        <p class="card-text"><strong>Seat Number:</strong> {{ pass.seatNumber }}</p>
+                                        <hr>
+                                    }
+                                   
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>}
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+
+
+
+
+<!-- <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Bus Information</h5>
+        <p class="card-text"><strong>Bus No:</strong> {{ item.bus.busNo }}</p>
+        <p class="card-text"><strong>From:</strong> {{ item.bus.routeFrom }}</p>
+        <p class="card-text"><strong>To:</strong> {{ item.bus.routeTo }}</p>
+        <p class="card-text"><strong>Price:</strong> {{ item.bus.price }}</p>
+        <p class="card-text"><strong>Time:</strong> {{ item.bus.departureTime }}</p>
+        <h5 class="card-title">Reservation Information</h5>
+        <p class="card-text"><strong>Date:</strong> {{ item.reservation.date }}</p>
+        <p class="card-text"><strong>Total Amount:</strong> {{ item.reservation.totalAmount }}</p>
+        <button class="btn btn-primary" (click)="togglePassengerDetails()">View Passenger Details</button>
+        @if (true) {
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Passenger Details</h5>
+                <p class="card-text"><strong>Name:</strong> {{ reservation.passenger.name }}</p>
+                <p class="card-text"><strong>Age:</strong> {{ reservation.passenger.age }}</p>
+                <p class="card-text"><strong>Seat Number:</strong> {{ reservation.passenger.seatNumber }}</p>
+            </div>
+
+            } -->
+<!-- </div> -->
+<!-- </div>
+</div> -->

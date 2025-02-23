@@ -1,0 +1,7 @@
+.btn {
+    padding: .55rem 1.5rem .45rem;
+  }
+  .custom-bg {
+    background-color: #8B4513; /* Replace with your desired color */
+}
+  @import "~@fortawesome/fontawesome-free/css/all.css"
