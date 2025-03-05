@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Feedback } from '../../model/interface/myReservation';
 import { FeedbackService } from '../../services/feedback.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-feedback',
-  imports: [ReactiveFormsModule,FormsModule,CommonModule,MatSnackBarModule],
+  imports: [ReactiveFormsModule,FormsModule,CommonModule,MatSnackBarModule,DatePipe],
   templateUrl: './feedback.component.html',
   styleUrl: './feedback.component.css'
 })

@@ -10,12 +10,12 @@
            
             <p class="card-text"><strong>Reservation Number:</strong> {{ item.reservation.id }}</p>
             <p class="card-text"><strong>Bus No:</strong> {{ item.bus.busNo }}</p>
-            <p class="card-text"><strong>From:</strong> {{ item.bus.routeFrom }}</p>
-            <p class="card-text"><strong>To:</strong> {{ item.bus.routeTo }}</p>
-            <p class="card-text"><strong>Price:</strong> {{ item.bus.price }}</p>
+            <p class="card-text"><strong>From:</strong> {{ item.bus.routeFrom | uppercase}}</p>
+            <p class="card-text"><strong>To:</strong> {{ item.bus.routeTo | uppercase}}</p>
+            <p class="card-text"><strong>Price:</strong> {{ item.bus.price |currency:'INR'}}</p>
             <p class="card-text"><strong>Time:</strong> {{ item.bus.departureTime }}</p>
-            <p class="card-text"><strong>Date:</strong> {{ item.reservation.date }}</p>
-            <p class="card-text"><strong>Total Amount:</strong> {{ item.reservation.totalAmount }}</p>
+            <p class="card-text"><strong>Date:</strong> {{ item.reservation.date | date:'short' }}</p>
+            <p class="card-text"><strong>Total Amount:</strong> {{ item.reservation.totalAmount | currency:'INR'}}</p>
             <button (click)="showPassengerDetails(item)" class="btn btn-primary">View Passenger Details</button>
             <button (click)="deleteReservation(item.reservation.id)" class="btn btn-danger">Delete Reservation</button>
             <div class="mt-2">

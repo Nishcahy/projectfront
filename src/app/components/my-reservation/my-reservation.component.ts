@@ -6,13 +6,13 @@ import { FeedbackService } from '../../services/feedback.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-my-reservation',
     templateUrl: './my-reservation.component.html',
     styleUrls: ['./my-reservation.component.css'],
-    imports: [FormsModule, MatSnackBarModule,CommonModule],
+    imports: [FormsModule, MatSnackBarModule,CommonModule,DatePipe,CurrencyPipe,UpperCasePipe],
 })
 export class MyReservationComponent implements OnInit {
     reservation: IMyReservation[] = [];

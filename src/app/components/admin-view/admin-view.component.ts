@@ -5,13 +5,13 @@ import { FeedbackService } from '../../services/feedback.service';
 import { IMyReservation, Feedback } from '../../model/interface/myReservation';
 import { Observer } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-admin-view',
     templateUrl: './admin-view.component.html',
     styleUrls: ['./admin-view.component.css'],
-    imports: [FormsModule,CommonModule],
+    imports: [FormsModule,CommonModule,CurrencyPipe,DatePipe,UpperCasePipe],
 })
 export class AdminViewComponent implements OnInit {
     busNo: string = '';

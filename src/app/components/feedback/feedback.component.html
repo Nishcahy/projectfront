@@ -10,8 +10,8 @@
           <div class="card-body">
             <div *ngIf="editingFeedbackId !== feedback.feedBackId">
               <h5 class="card-title">Reservation Number: {{ feedback.reservationId }}</h5>
-              <p class="card-text"><strong>Complaint:</strong> {{ feedback.complaintStatement }}</p>
-              <p class="card-text"><strong>Date:</strong> {{ feedback.date }}</p>
+              <p class="card-text"><strong>FeedBack:</strong> {{ feedback.complaintStatement }}</p>
+              <p class="card-text"><strong>Date:</strong> {{ feedback.date | date:'short' }}</p>
               <button class="btn btn-primary btn-sm mr-2" (click)="startEditing(feedback)">Edit</button>
               <button class="btn btn-danger btn-sm" (click)="deleteFeedback(feedback.feedBackId)">Delete</button>
             </div>

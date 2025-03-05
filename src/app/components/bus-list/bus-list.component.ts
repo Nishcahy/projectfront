@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IBus } from '../../model/interface/myReservation';
 import { BusService } from '../../services/bus.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bus-list',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,CurrencyPipe,UpperCasePipe],
   templateUrl: './bus-list.component.html',
   styleUrl: './bus-list.component.css'
 })
