@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <h2>Bus List</h2>
+  
+    <div class="mb-3">
+      <button class="btn btn-primary me-2" (click)="loadAllBuses()">Show All Buses</button>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search by Bus No" [(ngModel)]="searchTerm">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchBuses()">Search</button>
+      </div>
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Bus ID</th>
+          <th>Bus No</th>
+          <th>Route From</th>
+          <th>Route To</th>
+          <th>Seats</th>
+          <th>Available Seats</th>
+          <th>Departure Time</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of buses">
+          <td>{{ bus.busId }}</td>
+          <td>{{ bus.busNo }}</td>
+          <td>{{ bus.routeFrom }}</td>
+          <td>{{ bus.routeTo }}</td>
+          <td>{{ bus.seats }}</td>
+          <td>{{ bus.availableSeats }}</td>
+          <td>{{ bus.departureTime }}</td>
+          <td>{{ bus.price }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" (click)="editBus(bus.busId!)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteBus(bus.busId!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

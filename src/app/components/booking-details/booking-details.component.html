@@ -1,0 +1,74 @@
+<div class="booking-details-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Booking Details</h5>
+      <button type="button" class="close" (click)="closeModal()">
+        <span aria-hidden="true">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <div *ngIf="selectedBus">
+        <p>Bus Number: {{ selectedBus.busNo}}</p>
+        <label>Date:</label>
+        <input type="date" [(ngModel)]="bookingDate" class="form-control" #bookingDateInput="ngModel" required>
+        <div *ngIf="bookingDateInput.invalid && bookingDateInput.touched" class="text-danger small">
+          <div *ngIf="bookingDateInput.errors?.['required']">Date is required.</div>
+        </div>
+        <label>Number of Seats:</label>
+        <input type="number" [(ngModel)]="numberOfSeats" class="form-control" #numberOfSeatsInput="ngModel" required min="1">
+        <div *ngIf="numberOfSeatsInput.invalid && numberOfSeatsInput.touched" class="text-danger small">
+          <div *ngIf="numberOfSeatsInput.errors?.['required']">Number of Seats is required.</div>
+          <div *ngIf="numberOfSeatsInput.errors?.['min']">Number of Seats must be at least 1.</div>
+        </div>
+        <button (click)="openSeatSelection()" [disabled]="numberOfSeatsInput.invalid || bookingDateInput.invalid">Select Seats</button>
+
+        <div *ngIf="showSeatSelectionPopup">
+          <div class="seat-selection-popup">
+            <div *ngFor="let seat of getSeatsArray(selectedBus.seats); let i = index"
+                 class="seat"
+                 [ngClass]="{'booked': isSeatBooked(seat), 'selected-seat': selectedSeats.includes(seat)}"
+                 (click)="!isSeatBooked(seat) && selectSeat(seat)">
+              {{ seat }}
+            </div>
+            <button (click)="closeSeatSelection()">Close</button>
+          </div>
+        </div>
+
+        <div *ngIf="numberOfSeats > 0">
+          <div *ngFor="let seatNumber of selectedSeats; let i = index">
+            <div class="passenger-details">
+              <p>Passenger for Seat {{ seatNumber }}:</p>
+              <label>Name:</label>
+              <input type="text" [(ngModel)]="passengers[i].name" class="form-control" #passengerNameInput="ngModel" required minlength="3" maxlength="50">
+              <div *ngIf="passengerNameInput.invalid && passengerNameInput.touched" class="text-danger small">
+                <div *ngIf="passengerNameInput.errors?.['required']">Name is required.</div>
+                <div *ngIf="passengerNameInput.errors?.['minlength']">Name must be at least 3 characters.</div>
+                <div *ngIf="passengerNameInput.errors?.['maxlength']">Name must be at most 50 characters.</div>
+              </div>
+              <label>Gender:</label>
+              <select [(ngModel)]="passengers[i].gender" class="form-control" #passengerGenderInput="ngModel" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+               <div *ngIf="passengerGenderInput.invalid && passengerGenderInput.touched" class="text-danger small">
+                <div *ngIf="passengerGenderInput.errors?.['required']">Gender is required.</div>
+              </div>
+              <label>Age:</label>
+              <input type="number" [(ngModel)]="passengers[i].age" class="form-control" #passengerAgeInput="ngModel" required min="1" max="120">
+              <div *ngIf="passengerAgeInput.invalid && passengerAgeInput.touched" class="text-danger small">
+                <div *ngIf="passengerAgeInput.errors?.['required']">Age is required.</div>
+                <div *ngIf="passengerAgeInput.errors?.['min']">Age must be at least 1.</div>
+                <div *ngIf="passengerAgeInput.errors?.['max']">Age must be at most 120.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button (click)="confirmBooking()" [disabled]="!isPassengerDetailsValid()">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</div>

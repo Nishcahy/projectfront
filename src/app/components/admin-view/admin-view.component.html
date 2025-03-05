@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <div class="row mb-3">
+    <div  *ngIf="!showFeedbacks"  class="col-auto">
+      <div class="form-group mb-0">
+        <input type="text" [(ngModel)]="busNo" placeholder="Enter Bus No" class="form-control form-control-sm" style="width: 150px;">
+      </div>
+    </div>
+    <div *ngIf="!showFeedbacks" class="col-auto">
+      <button (click)="searchReservations()" class="btn btn-primary btn-sm">Search</button>
+    </div>
+    <div class="col text-right">
+      <button (click)="loadAllReservations()" class="btn btn-secondary btn-sm">Show All Reservations</button>
+      <button (click)="loadFeedbacks()" class="btn btn-info btn-sm">Show Feedbacks</button>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!showFeedbacks">
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          @for (item of reservations; track $index) {
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Reservation Details</h5>
+                <div *ngIf="item.reservation != null">
+                  <p class="card-text"><strong>Reservation Number:</strong> {{ item.reservation.id }}</p>
+                  <p class="card-text"><strong>Bus No:</strong> {{ item.bus.busNo }}</p>
+                  <p class="card-text"><strong>From:</strong> {{ item.bus.routeFrom }}</p>
+                  <p class="card-text"><strong>To:</strong> {{ item.bus.routeTo }}</p>
+                  <p class="card-text"><strong>Price:</strong> {{ item.bus.price }}</p>
+                  <p class="card-text"><strong>Time:</strong> {{ item.bus.departureTime }}</p>
+                  <p class="card-text"><strong>Date:</strong> {{ item.reservation.date }}</p>
+                  <p class="card-text"><strong>Total Amount:</strong> {{ item.reservation.totalAmount }}</p>
+                  <button (click)="showPassengerDetails(item)" class="btn btn-primary btn-sm">View Passenger Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      @if (selectedItem) {
+      <div class="modal-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center;">
+        <div class="modal-card" style="background: white; padding: 20px; border-radius: 5px; width: 500px; max-width: 90%;">
+          <div class="modal-card-content">
+            <h5 class="card-title">Passenger Details</h5>
+            @for (pass of selectedItem.reservation.passengers; track $index) {
+            <p class="card-text"><strong>Name:</strong> {{ pass.name }}</p>
+            <p class="card-text"><strong>Age:</strong> {{ pass.age }}</p>
+            <p class="card-text"><strong>Seat Number:</strong> {{ pass.seatNumber }}</p>
+            <hr>
+            }
+            <button (click)="closePassengerDetails()" class="btn btn-secondary btn-sm">Close</button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div *ngIf="showFeedbacks">
+    <div class="row">
+      @for (feedback of feedbacks; track $index) {
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <p><strong>Feedback ID:</strong> {{ feedback.feedBackId }}</p>
+            <p><strong>User ID:</strong> {{ feedback.userId }}</p>
+            <p><strong>Message:</strong> {{ feedback.complaintStatement }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

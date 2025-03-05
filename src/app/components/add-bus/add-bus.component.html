@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center py-2">
+          <h5 class="mb-0">Create Bus</h5>
+        </div>
+        <div class="card-body p-3">
+          <form (ngSubmit)="onSubmit()" #busForm="ngForm">
+            <div class="mb-2">
+              <label for="busNo" class="form-label small">Bus No</label>
+              <input type="text" class="form-control form-control-sm" id="busNo" [(ngModel)]="bus.busNo" name="busNo" #busNoInput="ngModel" required minlength="3" maxlength="10">
+              <div *ngIf="busNoInput.invalid && (busNoInput.dirty || busNoInput.touched)" class="text-danger small">
+                <div *ngIf="busNoInput.errors?.['required']">Bus No is required.</div>
+                <div *ngIf="busNoInput.errors?.['minlength']">Bus No must be at least 3 characters.</div>
+                <div *ngIf="busNoInput.errors?.['maxlength']">Bus No must be at most 10 characters.</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="routeFrom" class="form-label small">Route From</label>
+              <input type="text" class="form-control form-control-sm" id="routeFrom" [(ngModel)]="bus.routeFrom" name="routeFrom" #routeFromInput="ngModel" required minlength="3" maxlength="20">
+              <div *ngIf="routeFromInput.invalid && (routeFromInput.dirty || routeFromInput.touched)" class="text-danger small">
+                <div *ngIf="routeFromInput.errors?.['required']">Route From is required.</div>
+                <div *ngIf="routeFromInput.errors?.['minlength']">Route From must be at least 3 characters.</div>
+                <div *ngIf="routeFromInput.errors?.['maxlength']">Route From must be at most 20 characters.</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="routeTo" class="form-label small">Route To</label>
+              <input type="text" class="form-control form-control-sm" id="routeTo" [(ngModel)]="bus.routeTo" name="routeTo" #routeToInput="ngModel" required minlength="3" maxlength="20">
+              <div *ngIf="routeToInput.invalid && (routeToInput.dirty || routeToInput.touched)" class="text-danger small">
+                <div *ngIf="routeToInput.errors?.['required']">Route To is required.</div>
+                <div *ngIf="routeToInput.errors?.['minlength']">Route To must be at least 3 characters.</div>
+                <div *ngIf="routeToInput.errors?.['maxlength']">Route To must be at most 20 characters.</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="seats" class="form-label small">Seats</label>
+              <input type="number" class="form-control form-control-sm" id="seats" [(ngModel)]="bus.seats" name="seats" #seatsInput="ngModel" required min="1" max="100">
+              <div *ngIf="seatsInput.invalid && (seatsInput.dirty || seatsInput.touched)" class="text-danger small">
+                <div *ngIf="seatsInput.errors?.['required']">Seats are required.</div>
+                <div *ngIf="seatsInput.errors?.['min']">Seats must be at least 1.</div>
+                <div *ngIf="seatsInput.errors?.['max']">Seats must be at most 100.</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="availableSeats" class="form-label small">Available Seats</label>
+              <input type="number" class="form-control form-control-sm" id="availableSeats" [(ngModel)]="bus.availableSeats" name="availableSeats" #availableSeatsInput="ngModel" required min="0">
+              <div *ngIf="availableSeatsInput.invalid && (availableSeatsInput.dirty || availableSeatsInput.touched)" class="text-danger small">
+                <div *ngIf="availableSeatsInput.errors?.['required']">Available Seats are required.</div>
+                <div *ngIf="availableSeatsInput.errors?.['min']">Available Seats must be at least 0.</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="departureTime" class="form-label small">Departure Time</label>
+              <input type="time" class="form-control form-control-sm" id="departureTime" [(ngModel)]="bus.departureTime" name="departureTime" #departureTimeInput="ngModel" required>
+              <div *ngIf="departureTimeInput.invalid && (departureTimeInput.dirty || departureTimeInput.touched)" class="text-danger small">
+                <div *ngIf="departureTimeInput.errors?.['required']">Departure Time is required.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label small">Price</label>
+              <input type="number" class="form-control form-control-sm" id="price" [(ngModel)]="bus.price" name="price" #priceInput="ngModel" required min="0">
+              <div *ngIf="priceInput.invalid && (priceInput.dirty || priceInput.touched)" class="text-danger small">
+                <div *ngIf="priceInput.errors?.['required']">Price is required.</div>
+                <div *ngIf="priceInput.errors?.['min']">Price must be at least 0.</div>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success btn-sm" [disabled]="busForm.invalid">Create Bus</button>
+            </div>
+          </form>
+          <div *ngIf="busAddedSuccessfully" class="mt-3 alert alert-success text-center py-2">
+            <small>Bus added successfully!</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

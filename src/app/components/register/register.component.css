@@ -1,0 +1,44 @@
+
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* More vibrant gradient */
+    background-size: 400% 400%; /* For animating the gradient */
+    animation: gradient 15s ease infinite; /* Animating the gradient */
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .form-label.small {
+    font-size: 0.8rem;
+    color: #151313;
+  }
+  
+  .btn-success.btn-sm{
+      background: linear-gradient(to right, #667eea, #764ba2);
+      border: none;
+  }
+  
+  .text-info{
+      color:#9370DB !important;
+  }

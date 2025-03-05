@@ -1,24 +1,69 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-center">Search Buses</h5>
-            <form>
-              <div class="mb-3">
-                <label for="from" class="form-label">From</label>
-                <input type="text" class="form-control" id="from" placeholder="Enter departure location">
-              </div>
-              <div class="mb-3">
-                <label for="to" class="form-label">To</label>
-                <input type="text" class="form-control" id="to" placeholder="Enter destination">
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Find</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+<div class="container mt-4">
+  <div class="search-container">
+    <h2>Bus Search</h2>
+    <div class="form-group d-flex align-items-center">
+      <label for="from" class="me-2">
+        <i class="fa-solid fa-location-pin"></i> From:
+      </label>
+      <input type="text" id="from" class="form-control" [(ngModel)]="fromDestination" />
     </div>
+
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <i class="fa-solid fa-right-left"></i>
+    </div>
+
+    <div class="form-group d-flex align-items-center">
+      <label for="to" class="me-2">
+        <i class="fa-solid fa-location-pin"></i> To:
+      </label>
+      <input type="text" id="to" class="form-control" [(ngModel)]="toDestination" />
+    </div>
+
+    <button class="btn btn-primary" (click)="searchBuses()">Search</button>
   </div>
+
+  <div class="search-results">
+    @if (loading) {
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading Bus Data...</span>
+    </div>
+    } @else if (error) {
+    <p class="text-danger">{{ error }}</p>
+    } @else {
+      @if (noBusesAvailable) {
+      <p>Sorry, no buses are available for the selected route.</p>
+      } @else {
+        @if (buses.length > 0) {
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Bus No</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Departure Time</th>
+              <th>Price</th>
+              <th>Available Seats</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (bus of buses; track bus.busId) {
+            <tr>
+              <td>{{ bus.busNo }}</td>
+              <td>{{ bus.routeFrom }}</td>
+              <td>{{ bus.routeTo }}</td>
+              <td>{{ bus.departureTime }}</td>
+              <td>{{ bus.price }}</td>
+              <td>{{ bus.availableSeats }}</td>
+              <td>
+                <button class="btn btn-success btn-sm" (click)="openBooking(bus)">Book</button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      }
+    }
+  </div>
+</div>

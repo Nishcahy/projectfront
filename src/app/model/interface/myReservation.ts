@@ -12,11 +12,11 @@ export interface IMyReservation {
     price: number;
     seats: number;
     availableSeats: number;
-    bookedSeatNumbers: number[];
+    bookedSeatNumbers: number[] | null;
   }
   
   export interface IReservation {
-    id: number;
+    id?: number;
     userId: number;
     busId: number;
     date: string;
@@ -26,10 +26,27 @@ export interface IMyReservation {
   }
   
   export interface IPassenger {
-    pid: number;
+    pid?: number;
     name: string;
     gender: string;
     age: number;
     seatNumber: number;
+  }
+
+  export interface Feedback {
+    feedBackId: number;
+    userId: number;
+    reservationId: number;
+    complaintStatement: string;
+    date: string;
+    busId: number;
+  }
+
+  export interface User{
+    name:string,
+    email:string,
+    password:string,
+    roles:string
+
   }
   
