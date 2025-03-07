@@ -20,7 +20,7 @@ export class NavbarComponent {
 
   role: string | null = 'user'; // Initialize with a default role
 
-  constructor(private authService: AuthService, private service: AuthService, private router: Router) { } // Inject AuthService
+  constructor(private authService: AuthService, private router: Router) { } // Inject AuthService
 
   ngOnInit(): void {
     this.role = this.authService.getUserRole();

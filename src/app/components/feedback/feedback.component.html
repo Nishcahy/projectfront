@@ -17,7 +17,7 @@
             </div>
             <div *ngIf="editingFeedbackId === feedback.feedBackId">
               <div class="form-group">
-                <label>Complaint:</label>
+                <label>FeedBack:</label>
                 <input type="text" class="form-control" [(ngModel)]="editedFeedback.complaintStatement" />
               </div>
               <button class="btn btn-success btn-sm mr-2" (click)="saveFeedback()">Save</button>
