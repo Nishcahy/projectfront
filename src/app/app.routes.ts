@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes} from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,7 +29,7 @@ export const routes: Routes = [
       { path: 'feedback', component: FeedbackComponent,canActivate: [authGuardGuard] },
       { path: 'addbus', component: AddBUsComponent,canActivate: [adminGuardGuard]},
       { path: 'bus-list', component: BusListComponent,canActivate: [adminGuardGuard] },
-      { path: 'edit-bus/:id', component: AddBUsComponent,canActivate: [adminGuardGuard] },
+      { path: 'edit-bus/:id', component: AddBUsComponent,canActivate: [adminGuardGuard]  },
       {path: 'booking/:busId', component: BookingDetailsComponent,canActivate: [authGuardGuard]},
       {path:'get-all-booking',component:AdminViewComponent,canActivate: [adminGuardGuard]}
     ]

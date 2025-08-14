@@ -1,4 +1,3 @@
-
 {
     "routes": [
       {
@@ -6,5 +5,5 @@
         "renderMode": "dynamic"
       }
     ]
-  }
+}
   
