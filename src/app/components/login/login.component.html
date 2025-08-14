@@ -17,7 +17,7 @@
       </div>
       <div class="mb-2">
         <label for="password" class="form-label small">Password</label>
-        <input type="password" class="form-control form-control-sm" id="password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required minlength="8" maxlength="14" >
+        <input type="password" class="form-control form-control-sm" id="password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required >
         <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger small">
           <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
           <!-- <div *ngIf="passwordInput.errors?.['minlength']">Password must be between 8 and 14 characters.</div>
