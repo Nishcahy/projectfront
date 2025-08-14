@@ -1,9 +1,5 @@
+
 {
-    "routes": [
-      {
-        "src": "/edit-bus/:id",
-        "renderMode": "dynamic"
-      }
-    ]
-}
+    "version": 2
+  }
   

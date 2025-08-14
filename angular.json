@@ -16,7 +16,12 @@
             "outputPath": "dist/busbooking",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "prerender":false,
+            
+"prerender": {
+  "routesFile": "routes.txt",
+  "discoverRoutes": false
+},
+
             "polyfills": [
               "zone.js"
             ],
