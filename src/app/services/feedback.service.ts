@@ -21,8 +21,8 @@ export class FeedbackService {
     return this.http.delete(`${this.apiUrl}/delete/${feedbackId}`, { responseType: 'text' });
   }
 
-  updateFeedback(feedbackId: number, feedback: any): Observable<any> { // Change Feedback to any
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Set headers
+  updateFeedback(feedbackId: number, feedback: any): Observable<any> { 
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); 
     return this.http.put(`${this.apiUrl}/update/${feedbackId}`, feedback, { headers });
   }
 

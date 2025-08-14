@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './bus-list.component.html',
   styleUrl: './bus-list.component.css'
 })
+
 export class BusListComponent implements OnInit {
 
   buses: IBus[] = []; // Array to store the list of buses

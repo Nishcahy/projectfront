@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IBus } from '../model/interface/myReservation';
 
 @Injectable({
@@ -18,6 +18,11 @@ export class BusService {
 
   getAllBuses(): Observable<IBus[]> {
     return this.http.get<IBus[]>(`${this.apiUrl}/all-bus`); // Updated endpoint
+  }
+  getAllBusIds(): Observable<number[]> {
+    return this.getAllBuses().pipe(
+      map(buses => buses.map(bus => bus.busId))
+    );
   }
 
   searchBuses(busNo: string): Observable<IBus[]> {

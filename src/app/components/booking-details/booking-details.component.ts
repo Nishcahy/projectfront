@@ -128,6 +128,7 @@ export class BookingDetailsComponent implements OnInit {
       busId: this.selectedBus.busId, // Gets the bus ID
       date: this.bookingDate, // Gets the booking date
       numberOfSeats: this.numberOfSeats, // Gets the number of seats
+      
       passengers: this.passengers.map((passenger) => {
         const { pid, ...passengerWithoutPid } = passenger; // Removes the passenger ID
         return passengerWithoutPid; // Returns the passenger without the ID
@@ -135,7 +136,10 @@ export class BookingDetailsComponent implements OnInit {
     };
 
     console.log('Reservation data:', reservation);
-
+    if(this.numberOfSeats>5){
+     alert("You cant book more than 5 seat")
+     return;
+    }
     this.reservationService.addReservation(reservation).subscribe(
       (response) => {
         console.log('Booking successful:', response);
