@@ -8,21 +8,21 @@
     <form (ngSubmit)="login()" #loginForm="ngForm">
       <div class="mb-2">
         <label for="username" class="form-label small">Username</label>
-        <input type="text" class="form-control form-control-sm" id="username" [(ngModel)]="username" name="username" #usernameInput="ngModel" required minlength="4" maxlength="20">
+        <input type="text" class="form-control form-control-sm" id="username" [(ngModel)]="username" name="username" #usernameInput="ngModel" required>
         <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="text-danger small">
           <div *ngIf="usernameInput.errors?.['required']">Username is required.</div>
-          <div *ngIf="usernameInput.errors?.['minlength']">Username must be at least 4 characters.</div>
-          <div *ngIf="usernameInput.errors?.['maxlength']">Username must be at most 20 characters.</div>
+          <!-- <div *ngIf="usernameInput.errors?.['minlength']">Username must be at least 4 characters.</div>
+          <div *ngIf="usernameInput.errors?.['maxlength']">Username must be at most 20 characters.</div> -->
         </div>
       </div>
       <div class="mb-2">
         <label for="password" class="form-label small">Password</label>
-        <input type="password" class="form-control form-control-sm" id="password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required minlength="8" maxlength="14" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).*$">
+        <input type="password" class="form-control form-control-sm" id="password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required minlength="8" maxlength="14" >
         <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger small">
           <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
-          <div *ngIf="passwordInput.errors?.['minlength']">Password must be between 8 and 14 characters.</div>
+          <!-- <div *ngIf="passwordInput.errors?.['minlength']">Password must be between 8 and 14 characters.</div>
           <div *ngIf="passwordInput.errors?.['maxlength']">Password must be between 8 and 14 characters.</div>
-          <div *ngIf="passwordInput.errors?.['pattern']">Password must contain at least one uppercase letter, one number, and one special character.</div>
+          <div *ngIf="passwordInput.errors?.['pattern']">Password must contain at least one uppercase letter, one number, and one special character.</div> -->
         </div>
       </div>
       <div class="d-grid">
